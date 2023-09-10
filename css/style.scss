@@ -476,6 +476,10 @@ a:hover, a:active {
 	a:hover{
 		color: #4786D6;
 	}
+	span{
+	}
+	.by_farbox{
+	}
 }
 
 
@@ -774,8 +778,8 @@ a.btn {
 	.footer{
 		display: none;
 	}
-}
+	.share{
+		display: grid;
+	}
 
-.utterances {
-	margin-left: 30px;
 }
