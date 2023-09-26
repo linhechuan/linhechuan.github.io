@@ -1,173 +1,381 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux离线安装nginx详细教程 | 林鹤川</title><meta name="author" content="林鹤川"><meta name="copyright" content="林鹤川"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、什么是离线安装？使用离线安装包进行软件安装的方式就叫离线安装。离线安装包又叫做完整安装包，包含所有的安装文件。与其相对的是在线安装，即在条件允许且网络良好的条件下采用网络安装的方式。在线安装方式的缺点是在不太好的网络状况下容易出现长时间等待或安装失败的情况，这种情况下只能进行离线安装。 二、安装步骤1.安装nginx所需依赖1.1 安装gcc和gcc-c++1.1.1 下载依赖包gcc依赖下载">
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>Linux离线安装nginx详细教程 - 林鹤川</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="一、什么是离线安装？使用离线安装包进行软件安装的方式就叫离线安装。离线安装包又叫做完整安装包，包含所有的安装文件。与其相对的是在线安装，即在条件允许且网络良好的条件下采用网络安装的方式。在线安装方式的缺点是在不太好的网络状况下容易出现长时间等待或安装失败的情况，这种情况下只能进行离线安装。 二、安装步骤1.安装nginx所需依赖1.1 安装gcc和gcc-c++1.1.1 下载依赖包gcc依赖下载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux离线安装nginx详细教程">
 <meta property="og:url" content="http://example.com/2023/09/21/Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="林鹤川">
 <meta property="og:description" content="一、什么是离线安装？使用离线安装包进行软件安装的方式就叫离线安装。离线安装包又叫做完整安装包，包含所有的安装文件。与其相对的是在线安装，即在条件允许且网络良好的条件下采用网络安装的方式。在线安装方式的缺点是在不太好的网络状况下容易出现长时间等待或安装失败的情况，这种情况下只能进行离线安装。 二、安装步骤1.安装nginx所需依赖1.1 安装gcc和gcc-c++1.1.1 下载依赖包gcc依赖下载">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/20230922101602.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/bb63f29c993e46a8a37abd790d30698c.png#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/452a570dbe9c4a1e8f61583842a3d395.png#pic_center">
 <meta property="article:published_time" content="2023-09-21T09:27:15.000Z">
 <meta property="article:modified_time" content="2023-09-21T09:29:03.467Z">
 <meta property="article:author" content="林鹤川">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/20230922101602.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/09/21/Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: true,
-    post: true
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Linux离线安装nginx详细教程',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2023-09-21 17:29:03'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/bb63f29c993e46a8a37abd790d30698c.png#pic_center">
     
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1695722177800">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1695722177800">
+
+    
         
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+            <link rel="stylesheet" href="/custom.css?v=1695722177801">
+        
     
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/20230922101602.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="林鹤川"><span class="site-name">林鹤川</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux离线安装nginx详细教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-21T09:27:15.000Z" title="发表于 2023-09-21 17:27:15">2023-09-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-21T09:29:03.467Z" title="更新于 2023-09-21 17:29:03">2023-09-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux离线安装nginx详细教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="一、什么是离线安装？"><a href="#一、什么是离线安装？" class="headerlink" title="一、什么是离线安装？"></a>一、什么是离线安装？</h3><p>使用离线安装包进行软件安装的方式就叫离线安装。<br>离线安装包又叫做完整安装包，包含所有的安装文件。与其相对的是在线安装，即在条件允许且网络良好的条件下采用网络安装的方式。在线安装方式的缺点是在不太好的网络状况下容易出现长时间等待或安装失败的情况，这种情况下只能进行离线安装。</p>
+
+    
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+
+
+    <script async src="/js/app.js?v=1695722177801"></script>
+    
+     
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="mdui-drawer-body-left">
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" 
+            style="background-image: url(https://i.dawnlab.me/b5a7e61560facdd5b8aa9683fce147d7.png)"
+        ></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="林鹤川" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="林鹤川"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="林鹤川">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="林鹤川" alt="林鹤川">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>4</div>
+        <div><span>标签</span>3</div>
+        <div><span>分类</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+        
+            
+            <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+        
+            
+            <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://jq.qq.com/?_wv=1027&k=5CfKHun"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ群'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/20238211"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/nexmoe/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/nexmoe"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://twitter.com/nexmoe"
+			target="_blank"
+			mdui-tooltip="{content: 'Twitter'}"
+			style="
+				color: rgb(59, 151, 239);
+				background-color: rgba(59, 151, 239, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-twitter"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://nexmoe.com/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+        
+            
+            
+
+        
+            
+            
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(3);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+        
+            
+            
+            
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+
+        
+            
+            
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/09/21/Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/">Linux离线安装nginx详细教程</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/21/jar%E5%8C%85%E8%BF%90%E8%A1%8C%E5%87%BA%E9%94%99/">jar包运行出错</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/15/Vue%E4%B9%8BNvm/">Vue之Nvm</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+        
+            
+            <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://xiaoshu.app/" target="_blank" >
+                    <img src="https://xsm.nexmoe.com/images/Infinite/Snipaste_2022-05-18_20-46-50.png" alt="小舒同学"></img>
+                    <p>小舒同学</p>
+                </a>
+            </li>
+        
+            <li>
+                <a href="https://nexmoe.com/" target="_blank" >
+                    <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="折影轻梦"></img>
+                    <p>折影轻梦</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+        
+    </aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 林鹤川
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+    <div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://i.dawnlab.me/b5a7e61560facdd5b8aa9683fce147d7.png" alt="Linux离线安装nginx详细教程" loading="lazy">
+            <h1>Linux离线安装nginx详细教程</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2023年09月21日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h3 id="一、什么是离线安装？"><a href="#一、什么是离线安装？" class="headerlink" title="一、什么是离线安装？"></a>一、什么是离线安装？</h3><p>使用离线安装包进行软件安装的方式就叫离线安装。<br>离线安装包又叫做完整安装包，包含所有的安装文件。与其相对的是在线安装，即在条件允许且网络良好的条件下采用网络安装的方式。在线安装方式的缺点是在不太好的网络状况下容易出现长时间等待或安装失败的情况，这种情况下只能进行离线安装。</p>
 <h3 id="二、安装步骤"><a href="#二、安装步骤" class="headerlink" title="二、安装步骤"></a>二、安装步骤</h3><p>1.安装nginx所需依赖<br>1.1 安装gcc和gcc-c++<br>1.1.1 下载依赖包<br>gcc依赖下载镜像地址：<br>官网：<a target="_blank" rel="noopener" href="https://gcc.gnu.org/releases.html">https://gcc.gnu.org/releases.html</a><br>阿里云镜像站：<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7/os/x86_64/Packages/">http://mirrors.aliyun.com/centos/7/os/x86_64/Packages/</a><br>CentOS 镜像站点：<a target="_blank" rel="noopener" href="https://vault.centos.org/7.5.1804/os/x86_64/Packages/">https://vault.centos.org/7.5.1804/os/x86_64/Packages/</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">只需下载如下依赖即可：</span><br><span class="line">cpp-4.8.5-44.el7.x86_64.rpm</span><br><span class="line">gcc-4.8.5-44.el7.x86_64.rpm</span><br><span class="line">glibc-devel-2.17-317.el7.x86_64.rpm</span><br><span class="line">glibc-headers-2.17-317.el7.x86_64.rpm</span><br><span class="line">kernel-headers-3.10.0-1160.el7.x86_64.rpm</span><br><span class="line">libmpc-1.0.1-3.el7.x86_64.rpm</span><br><span class="line">mpfr-3.1.1-4.el7.x86_64.rpm</span><br><span class="line">----------------------------------------------</span><br><span class="line">gcc-c++-4.8.5-44.el7.x86_64.rpm</span><br><span class="line">libstdc++-4.8.5-44.el7.x86_64.rpm</span><br><span class="line">libstdc++-devel-4.8.5-44.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
 
 <p>1.1.2 上传依赖包<br>下载完成后，将依赖包上传到服务器，若权限不足不能上传，可以通过 sudo chmod -R 777 文件夹路径名命令增加权限</p>
-<p>1.1.3 安装依赖<br>进入上传目录，输入rpm -Uvh *.rpm –nodeps –force命令进行批量安装，出现下图则说明安装成功<br><img src="https://img-blog.csdnimg.cn/bb63f29c993e46a8a37abd790d30698c.png#pic_center" alt="在这里插入图片描述"></p>
+<p>1.1.3 安装依赖<br>进入上传目录，输入rpm -Uvh *.rpm –nodeps –force命令进行批量安装，出现下图则说明安装成功<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://img-blog.csdnimg.cn/bb63f29c993e46a8a37abd790d30698c.png#pic_center" alt="在这里插入图片描述" data-caption="在这里插入图片描述" loading="lazy"></p>
 <p>1.1.4 验证安装</p>
 <p>使用gcc-v和g++ -v命令查看版本，若出现版本详情则说明离线安装成功。</p>
 <p>1.2 安装pcre<br>1.2.1 下载pcre<br>下载地址：<a target="_blank" rel="noopener" href="http://www.pcre.org/">http://www.pcre.org/</a></p>
@@ -193,7 +401,90 @@
 <p>2.4 编译<br>make</p>
 <p>2.5 安装<br>make install</p>
 <h4 id="2-6-检查并启动"><a href="#2-6-检查并启动" class="headerlink" title="2.6 检查并启动"></a>2.6 检查并启动</h4><p>2.6.1 检查</p>
-<p>进入安装目录下的s<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=bin%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">bin文件</a>夹，输入<code>./nginx -t</code>，如下图则说明安装成功：<br><img src="https://img-blog.csdnimg.cn/452a570dbe9c4a1e8f61583842a3d395.png#pic_center" alt="在这里插入图片描述"></p>
+<p>进入安装目录下的s<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=bin%E6%96%87%E4%BB%B6&spm=1001.2101.3001.7020">bin文件</a>夹，输入<code>./nginx -t</code>，如下图则说明安装成功：<br><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://img-blog.csdnimg.cn/452a570dbe9c4a1e8f61583842a3d395.png#pic_center" alt="在这里插入图片描述" data-caption="在这里插入图片描述" loading="lazy"></p>
 <p>2.6.2 启动</p>
 <p><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%90%AF%E5%8A%A8nginx&spm=1001.2101.3001.7020">启动nginx</a>,命令：<code>./nginx</code></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">林鹤川</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/09/21/Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/">http://example.com/2023/09/21/Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">林鹤川</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="/img/20230922101602.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/20230922101602.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">林鹤川</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">一、什么是离线安装？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">二、安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-%E6%A3%80%E6%9F%A5%E5%B9%B6%E5%90%AF%E5%8A%A8"><span class="toc-number">2.1.</span> <span class="toc-text">2.6 检查并启动</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/21/Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/" title="Linux离线安装nginx详细教程">Linux离线安装nginx详细教程</a><time datetime="2023-09-21T09:27:15.000Z" title="发表于 2023-09-21 17:27:15">2023-09-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/21/jar%E5%8C%85%E8%BF%90%E8%A1%8C%E5%87%BA%E9%94%99/" title="jar包运行出错">jar包运行出错</a><time datetime="2023-09-21T09:26:24.000Z" title="发表于 2023-09-21 17:26:24">2023-09-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/15/Vue%E4%B9%8BNvm/" title="Vue之Nvm">Vue之Nvm</a><time datetime="2023-09-15T09:46:26.000Z" title="发表于 2023-09-15 17:46:26">2023-09-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/10/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="我的第一篇博客">我的第一篇博客</a><time datetime="2023-09-10T03:29:12.000Z" title="发表于 2023-09-10 11:29:12">2023-09-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 林鹤川</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+
+    <p><img src="https://i.dawnlab.me/53a8c7cf3ad77a0f0a456ce2c6afe88a.png" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>林鹤川<br>
+        <strong>本文链接：</strong><a href="http://example.com/2023/09/21/Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/" title="http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;09&#x2F;21&#x2F;Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2023&#x2F;09&#x2F;21&#x2F;Linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85nginx%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Linux/" rel="tag">Linux</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1695722177783"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置 slotComment
+
+      </div>
+  
+</div>
+</div>
+        <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">一、什么是离线安装？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">二、安装步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-%E6%A3%80%E6%9F%A5%E5%B9%B6%E5%90%AF%E5%8A%A8"><span class="toc-number">2.1.</span> <span class="toc-text">2.6 检查并启动</span></a></li></ol></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+    </div>
+    <div id="nexmoe-search-space">
+	<div class="search-container">
+		<div class="search-header">
+			<div class="search-input-container">
+				<input
+					class="search-input"
+					type="text"
+					placeholder="搜索"
+					oninput="sinput();"
+				/>
+			</div>
+			<a class="search-close" onclick="sclose();">×</a>
+		</div>
+		<div class="search-body"></div>
+	</div>
+</div>
+
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
